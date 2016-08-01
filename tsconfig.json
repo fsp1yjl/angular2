@@ -1,10 +1,15 @@
 {
   "files": [
-    "src/main.ts"
+    "src/typescript/main.ts"
   ],
   "compilerOptions": {
-    "noImplicitAny": true,
     "target": "es2015",
-    "emitDecoratorMetadata": true
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
   }
 }

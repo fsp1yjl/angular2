@@ -1,6 +1,4 @@
-import {sayHello} from "./greet";
-
-console.log(sayHello("TypeScript"));
+import {sayHello} from "./utils/greet";
 
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component, Injectable} from '@angular/core';
@@ -66,7 +64,7 @@ export class AppComponent {
     constructor(private appService:Service) {
         this.appService.getPerson().subscribe(
             person => {
-                this.text = person.login;
+                this.text = sayHello(person.login);
             },
             error => {
                 console.error(error);
