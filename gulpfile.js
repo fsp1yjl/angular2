@@ -36,19 +36,23 @@ gulp.task("copy-html", function () {
 });
 
 gulp.task('test', function () {
-    var tsResultApp = gulp.src(['src/**/*.ts'])
-        .pipe(tsc(tsProject))
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('dist/test'));
 
     var tsResultLib = gulp.src([
-        'node_modules/zone.js/dist/zone.js',
+        'node_modules/zone.js/dist/zone.zonejs',
         'node_modules/reflect-metadata/Reflect.js'
     ], {base: 'node_modules/'})
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('dist/test'));
 
-    return gulp.src(['dist/test/lib.js', 'dist/test/app.js']).pipe(jasmine());
+    var tsResultApp = gulp.src([
+        'src/typescript/utils/*.ts',
+        'typings/*.ts'
+    ])
+        .pipe(tsc(tsProject))
+        // .pipe(concat('app.js'))
+        .pipe(gulp.dest('dist/test'));
+
+    return gulp.src(['dist/test/lib.js', 'dist/test/**/*.spec.js']).pipe(jasmine());
 });
 
 var watchedBrowserify = watchify(
