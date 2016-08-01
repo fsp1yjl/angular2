@@ -21,8 +21,7 @@ var paths = {
 gulp.task('libs', function() {
     return gulp.src([
             'node_modules/zone.js/dist/zone.js',
-            'node_modules/reflect-metadata/Reflect.js',
-            'node_modules/systemjs/dist/index.js'
+            'node_modules/reflect-metadata/Reflect.js'
         ], {base: 'node_modules/'})
         .pipe(sourcemaps.init())
         .pipe(concat('lib.min.js'))
