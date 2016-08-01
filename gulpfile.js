@@ -32,7 +32,7 @@ gulp.task('libs', function() {
 });
 
 gulp.task("copy-html", function () {
-    return gulp.src(paths.pages)
+    return gulp.src(paths.pages, {base: 'src/resources/'})
         .pipe(gulp.dest("dist/main"));
 });
 
